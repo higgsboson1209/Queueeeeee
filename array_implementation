@@ -1,0 +1,78 @@
+#include<string.h>
+using namespace std;
+int front=-1,rear=-1;
+struct studentt
+{ char name[100];
+int value;
+};
+struct studentt queuee[6];
+void enque(struct studentt l)
+{
+if(rear==5)
+{
+cout<<"Full \n";
+}
+else
+{
+if(front==rear && rear==-1)
+{
+front=front+1;
+rear=rear+1;
+queuee[rear]=l;
+}
+else
+{
+rear=rear+1;
+queuee[rear]=l;
+}
+}
+}
+void dequee()
+{
+if(front==rear && rear==-1)
+{
+cout<<"Queue is empty \n";
+}
+else
+{
+for(int j=front ; j<=rear-1; j++)
+{
+queuee[j]=queuee[j+1];
+}
+rear=rear-1;
+}
+}
+void display()
+{
+for(int k=front; k<=rear; k++)
+{ cout<<queuee[k].name;
+cout<<queuee[k].value;
+cout<<"\n";
+}
+} int main()
+{
+int y=1;
+struct studentt m;
+while(y==1)
+{
+int ch;
+cout<<"Please insert 1 to add;2 to delete;3 to display \n";
+cin>>ch;
+switch(ch)
+{
+case 1:
+cin>>m.name;
+cin>>m.value;
+enque(m);
+break;
+case 2:
+dequee();
+break;
+case 3:
+display();
+break;
+}
+cout<<"Press 1 to continue \n";
+cin>>y;
+}
+}
